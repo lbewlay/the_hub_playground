@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype: AI Chatbot</title>
+    <style>
+        :root {
+            --gitbook-bg: #FFFFFF;
+            --gitbook-sidebar-bg: #F7F7F7;
+            --gitbook-text: #333333;
+            --gitbook-primary: #4A90E2;
+            --gitbook-border: #EAEAEA;
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            font-family: var(--font-main);
+            margin: 0;
+            display: flex;
+            background-color: var(--gitbook-bg);
+            color: var(--gitbook-text);
+            height: 100vh;
+        }
+        .sidebar {
+            width: 280px;
+            background-color: var(--gitbook-sidebar-bg);
+            padding: 24px;
+            border-right: 1px solid var(--gitbook-border);
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .sidebar h2 {
+            font-size: 18px;
+            margin-top: 0;
+            color: var(--gitbook-text);
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar li a {
+            text-decoration: none;
+            color: var(--gitbook-text);
+            display: block;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+        .sidebar li a.active, .sidebar li a:hover {
+            background-color: var(--gitbook-primary);
+            color: white;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 40px 60px;
+            overflow-y: auto;
+        }
+        .main-content h1 {
+            font-size: 32px;
+            border-bottom: 1px solid var(--gitbook-border);
+            padding-bottom: 16px;
+            margin-top: 0;
+        }
+        .main-content p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #555;
+        }
+        /* Chatbot specific styles */
+        .chatbot-container {
+            max-width: 600px;
+            margin-top: 40px;
+            border: 1px solid var(--gitbook-border);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .chatbot-header {
+            background-color: var(--gitbook-primary);
+            color: white;
+            padding: 12px 16px;
+            font-weight: bold;
+        }
+        .chatbot-messages {
+            height: 350px;
+            padding: 16px;
+            overflow-y: auto;
+            background-color: #FAFAFA;
+        }
+        .message {
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+        }
+        .message.bot .bubble {
+            background-color: #E9E9EB;
+            color: black;
+            align-self: flex-start;
+        }
+        .message.user .bubble {
+            background-color: var(--gitbook-primary);
+            color: white;
+            align-self: flex-end;
+        }
+        .bubble {
+            padding: 10px 14px;
+            border-radius: 18px;
+            max-width: 75%;
+        }
+        .chatbot-input {
+            display: flex;
+            padding: 12px;
+            border-top: 1px solid var(--gitbook-border);
+        }
+        .chatbot-input input {
+            flex-grow: 1;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 20px;
+            margin-right: 8px;
+        }
+        .chatbot-input button {
+            background-color: var(--gitbook-primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Playground Sandbox</h2>
+        <ul>
+            <li><a href="#" class="active">AI Chatbot</a></li>
+            <li><a href="#">Interactive Playgrounds</a></li>
+            <li><a href="#">Custom Tool Demo</a></li>
+            <li><a href="#">Learning Modules</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <h1>AI Chatbot Integration</h1>
+        <p>This demonstrates how an AI chatbot could be embedded into the hub using GitBook's custom code blocks. Users can ask questions about our resources, get quick definitions, or find relevant materials without leaving the page. This is a highly feasible option with a 2-3 week setup timeline[cite: 16, 19].</p>
+
+        <div class="chatbot-container">
+            <div class="chatbot-header">Hub Helper Bot</div>
+            <div class="chatbot-messages">
+                <div class="message bot">
+                    <div class="bubble">Hello! I'm the Hub Helper. How can I assist you today? You can ask me about digital security, language justice, or any other topics in our hub.</div>
+                </div>
+                <div class="message user">
+                    <div class="bubble">What resources do you have on responsible AI?</div>
+                </div>
+                 <div class="message bot">
+                    <div class="bubble">Great question! We have a Responsible AI microsite, a guide on choosing AI tools, and several case studies. Would you like a link to the microsite?</div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message...">
+                <button>Send</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

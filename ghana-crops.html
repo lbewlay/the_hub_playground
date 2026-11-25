@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From photo to diagnosis, confidence and an expert (crop disease detection in Ghana) | AI Playground for Climate Action</title>
+<meta name="description" content="A walk-through with example data: follow a leaf photo through a diagnosis, a confidence level and a referral to an expert, as in a crop disease app built with farmers in Ghana.">
+<script>(function(){var d=document.documentElement,q=location.search,e=/[?&]embed=1(&|$)/.test(q)||(!/[?&]embed=0(&|$)/.test(q)&&window.self!==window.top);d.className+=' js'+(e?' embed':'');})();</script>
+<link rel="stylesheet" href="assets/playground.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <img class="logo" src="assets/ter-wordmark-navy.png" alt="The Engine Room" width="128" height="24">
+    <a class="site-title" href="index.html">AI Playground for Climate Action</a>
+  </div>
+  <span class="badge badge-example">Early version: example data</span>
+</header>
+
+<div class="app-layout">
+  <nav class="sidebar" aria-label="Playground">
+    <button class="contents-toggle" type="button" aria-expanded="false" aria-controls="sidebar-nav">Contents <span class="toggle-sign" aria-hidden="true">+</span></button>
+    <div class="sidebar-nav" id="sidebar-nav">
+      <h2>Playground</h2>
+      <ul>
+        <li><a href="index.html">Start here</a></li>
+      </ul>
+      <h2>Stories</h2>
+      <ul>
+        <li><a href="petabencana.html">Report a flood, then see it on the map<span class="lens-tag">PetaBencana, frugal</span></a></li>
+        <li><a href="floralebanon.html">Photograph a plant so a model can learn from it<span class="lens-tag">Taxonomy meets Tech, community-centered</span></a></li>
+        <li><a href="ghana-crops.html" aria-current="page">From photo to diagnosis, confidence and an expert<span class="lens-tag">Crop disease detection in Ghana, ecological</span></a></li>
+      </ul>
+      <h2>Experiment</h2>
+      <ul>
+        <li><a href="comparison.html">Large or small model: what does each cost?<span class="lens-tag">Coming</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="main-inner">
+      <p class="eyebrow">Crop disease detection in Ghana <span class="badge badge-lens">Ecological</span></p>
+      <h1>From photo to diagnosis, confidence and an expert</h1>
+      <p class="lede">A diagnosis app gives a guess and says how sure it is. The most important design choice is what happens when the guess is shaky, and what happens when the climate changes under the model.</p>
+      <p>Farmers in Ghana told the University of Energy and Natural Resources that pests and diseases were hurting their crops. With them, the university built an app for basic Android phones that diagnoses a problem from a photo, works offline and recommends environmentally friendly remedies instead of chemical sprays. In five steps, follow one example photo through the app's logic.</p>
+      <div class="note">
+        <p><span class="badge badge-example">Example data</span> The leaf drawings, diagnoses, confidence levels and expert replies below are examples we wrote to show how confidence works. They are not output from the app, and nothing here is advice for a real plant.</p>
+      </div>
+
+      <div data-walkthrough id="walkthrough">
+
+        <section class="step" data-title="Pick a photo" aria-labelledby="s1-title">
+          <h2 id="s1-title"><span class="step-number">Step 1 of 5</span>Pick a photo</h2>
+          <p>In the app, a farmer takes a picture of the affected part of the plant with the phone's camera, or picks one from the gallery. Choose one of these three example cashew leaves. You can come back and try the others.</p>
+          <div class="example-frame">
+            <span class="badge badge-example">Example data</span>
+            <div class="photo-picker" id="photo-picker" role="group" aria-label="Example leaf photos"></div>
+          </div>
+          <div class="btn-row"><button class="btn" type="button" disabled aria-describedby="upload-why">Use my own photo</button></div>
+          <p class="example-caption" id="upload-why">Switched off on purpose. We are not running a model here, and a pretend diagnosis of your own plant would be misleading.</p>
+          <p class="feedback" id="pick-feedback" aria-live="polite"></p>
+        </section>
+
+        <section class="step" data-title="The diagnosis" aria-labelledby="s2-title">
+          <h2 id="s2-title"><span class="step-number">Step 2 of 5</span>The diagnosis, and how sure it is</h2>
+          <p>The app names the likely problem and gives a confidence level: how sure the model is about its own guess. The team described it like this:</p>
+          <blockquote class="quote">
+            <p>'It tells you this is probably say anthracnose, but my confidence is probably 70%. Then if you are not sure, you could then send the picture in the diagnosis by a click of a button to the consultant.'</p>
+            <footer>Crop disease detection in Ghana, from our case study <span class="badge badge-pending">Quote check pending</span></footer>
+          </blockquote>
+          <div class="example-frame">
+            <span class="badge badge-example">Example data</span>
+            <div id="result-card"></div>
+            <p class="example-caption">Example output written by The Engine Room to show how confidence works; not output from the app.</p>
+          </div>
+          <p>A confidence level is not a guarantee. A model can be fairly sure and still wrong, especially when it sees something it was never trained on.</p>
+        </section>
+
+        <section class="step" data-title="Your call" aria-labelledby="s3-title">
+          <h2 id="s3-title"><span class="step-number">Step 3 of 5</span>Your call: act on it, or ask an expert?</h2>
+          <p>The app keeps people in the loop. Three experts in crop disease agreed to have their phone numbers in the app, and with one button a farmer can send the diagnosis to one of them, who confirms it or says it is wrong.</p>
+          <div class="example-frame">
+            <span class="badge badge-example">Example data</span>
+            <p id="call-context"></p>
+            <div class="btn-row">
+              <button class="btn" type="button" id="btn-act">Act on the recommendation</button>
+              <button class="btn btn-primary" type="button" id="btn-send">Send it to an expert</button>
+            </div>
+            <div class="chat" id="expert-chat" aria-live="polite"></div>
+            <p class="feedback" id="call-feedback" aria-live="polite"></p>
+          </div>
+          <p>Farmers without a smartphone, or stuck with the app, can go to an e-kiosk attendant in their community, who helps them diagnose the problem and teaches families to use their phones.</p>
+        </section>
+
+        <section class="step" data-title="The recommendation" aria-labelledby="s4-title">
+          <h2 id="s4-title"><span class="step-number">Step 4 of 5</span>What the app recommends, and in which language</h2>
+          <p>Farmers had seen chemical sprays harm the soil they depend on for future harvests, so the app recommends environmentally friendly remedies. When we spoke with the team, they gave the example of fall armyworm on maize, one of the crops in the first version: farmers were shown how to make a spray from neem leaves. That is the team's example, not advice from us.</p>
+          <p><span class="badge badge-pending">To confirm with the team</span> We will check with the team that they are comfortable with this example on the page.</p>
+          <p>Language shaped the design too. The diagnosis comes back in Twi, one of the most widely spoken languages in Ghana. The recommendations are read aloud, but in English, because text to speech for Twi was not available. The app works in a mix of the two until it is.</p>
+          <div class="stub">
+            <p class="stub-title">Twi on this page: to confirm with the team</p>
+            <p>We have not written any Twi here. Step titles or a sample diagnosis in Twi would come from the team or a Twi speaker they trust.</p>
+          </div>
+        </section>
+
+        <section class="step" data-title="When the rains stopped" aria-labelledby="s5-title">
+          <h2 id="s5-title"><span class="step-number">Step 5 of 5</span>When the rains stopped</h2>
+          <p>The first version covered four crops: cassava, cashew, maize and tomato. It worked, until a year when the weather turned.</p>
+          <blockquote class="quote">
+            <p>'That particular year, what you realize is that even if you use the app, you see that it will identify every crop as sick.'</p>
+            <footer>Crop disease detection in Ghana, from our case study <span class="badge badge-pending">Quote check pending</span></footer>
+          </blockquote>
+          <p>A model trained on leaves from normal seasons read drought as disease, like the third example leaf in this walk-through. The team made a hard decision: they dropped three of the four crops and focused on cashew, which has deep roots, grows in every season and is now the main cash crop in the area. The lesson they drew is that a model cannot rely on historical patterns alone; data collection has to keep going as the climate changes.</p>
+
+          <h3>The ecological reading</h3>
+          <p>The ecological choices run through the whole project: remedies that protect the soil, and a tool that had to adapt to a changing climate. The team also thought about the footprint of building the model. Their local graphics card had eight gigabytes of memory and the local power supply was inefficient, so they paid for Google Colab and trained there, partly to lower the carbon footprint. That is their reasoning; how much it saved was not measured.</p>
+          <p><strong>To think about:</strong> when should a tool hand over to a person, and who should that person be?</p>
+          <div class="stub">
+            <p class="stub-title">Try the app, screenshots and the farmer video: to confirm with the team</p>
+            <p>We have not yet confirmed whether and where the app is published, or permission to show screenshots or the video of a farmer using it, which also needs the farmer's own consent. Links and images will go here once agreed.</p>
+          </div>
+        </section>
+
+      </div>
+
+      <h2 class="shell-only">About this walk-through</h2>
+      <p class="shell-only">Based on The Engine Room's case study of the Digital Literacy and AI for African Crop Disease Detection project and our interview with the team, led by the University of Energy and Natural Resources.</p>
+
+      <footer class="site-footer">
+        <p>All leaf drawings, diagnoses, confidence levels and expert replies on this page are example data written by The Engine Room. They are not output from the app.</p>
+        <p><a href="index.html">Back to the Playground</a> &middot; Last updated November 25, 2026.</p>
+      </footer>
+    </div>
+  </main>
+</div>
+
+<script src="assets/playground.js"></script>
+<script src="data/ghana-crops.example.js"></script>
+<script>
+(function () {
+  'use strict';
+  var D = window.EXAMPLE_CROPS;
+  var el = window.Playground.el;
+
+  function leafSVG(kind, alt) {
+    var fill = kind === 'drought' ? '#A9B65A' : '#5F9440';
+    var g = '<path d="M20 70 C35 25 100 22 128 58 C100 102 35 108 20 70 Z" fill="' + fill + '" stroke="#3F6B2A" stroke-width="2"/>';
+    g += '<path d="M14 72 L128 58" stroke="#3F6B2A" stroke-width="2"/>';
+    for (var k = 0; k < 5; k++) {
+      var x = 34 + k * 17;
+      g += '<path d="M' + x + ' 70 L' + (x + 12) + ' ' + (44 + k * 2) + ' M' + x + ' 70 L' + (x + 12) + ' ' + (94 - k * 2) + '" stroke="#3F6B2A" stroke-width="1.2"/>';
+    }
+    if (kind === 'spots') {
+      [[50, 52, 7], [78, 84, 9], [96, 50, 6], [64, 72, 5], [104, 74, 7]].forEach(function (s) {
+        g += '<circle cx="' + s[0] + '" cy="' + s[1] + '" r="' + s[2] + '" fill="#4A2E1C"/>';
+      });
+    } else if (kind === 'faint') {
+      [[56, 56], [74, 82], [92, 60], [106, 70]].forEach(function (s) {
+        g += '<path d="M' + s[0] + ' ' + s[1] + ' q6 -4 10 2 t10 0" stroke="#D7D2A0" stroke-width="2" fill="none" opacity="0.9"/>';
+      });
+    } else {
+      g += '<path d="M20 70 C35 25 100 22 128 58 C120 50 112 46 104 40 C90 34 60 32 40 46 C30 54 24 62 20 70 Z" fill="#B88A3E" opacity="0.85"/>';
+      g += '<path d="M20 70 C35 108 100 102 128 58 C118 70 104 84 88 90 C64 96 36 90 20 70 Z" fill="#C79A4A" opacity="0.8"/>';
+    }
+    return '<svg viewBox="0 0 146 130" role="img" aria-label="' + alt + '"><rect x="1" y="1" width="144" height="128" rx="4" fill="#F4F1E8" stroke="#D8D2C0"/>' + g + '</svg>';
+  }
+
+  var current = null;
+  var picker = document.getElementById('photo-picker');
+  var buttons = [];
+  D.photos.forEach(function (p) {
+    var b = el('button', { 'class': 'photo-option', type: 'button', 'aria-pressed': 'false' });
+    b.innerHTML = leafSVG(p.leaf, 'Example drawing: ' + p.title.toLowerCase());
+    b.appendChild(el('span', null, p.title));
+    b.addEventListener('click', function () { choose(p, b); });
+    picker.appendChild(b);
+    buttons.push(b);
+  });
+
+  function choose(p, btn) {
+    current = p;
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+    var fb = document.getElementById('pick-feedback');
+    fb.className = 'feedback ok';
+    fb.textContent = 'You chose: ' + p.title.toLowerCase() + '. Go to the next step to see the example diagnosis.';
+    renderResult();
+    resetCall();
+  }
+
+  function renderResult() {
+    var box = document.getElementById('result-card');
+    box.innerHTML = '';
+    if (!current) {
+      box.appendChild(el('p', { 'class': 'empty' }, 'Pick a photo in step 1 first.'));
+      return;
+    }
+    var card = el('div', { 'class': 'result-card' });
+    card.appendChild(el('p', { 'class': 'post-meta' }, 'Example diagnosis'));
+    card.appendChild(el('p', { 'class': 'result-label' }, 'Likely problem: ' + current.result));
+    var conf = el('div', { 'class': 'confidence' });
+    var bar = el('div', { 'class': 'confidence-bar', role: 'img', 'aria-label': 'Confidence ' + current.confidence + ' percent' });
+    var fill = el('span');
+    fill.style.width = current.confidence + '%';
+    bar.appendChild(fill);
+    conf.appendChild(bar);
+    conf.appendChild(el('p', { 'class': 'confidence-text' }, 'Confidence: ' + current.confidence + '% (' + current.level + ')'));
+    card.appendChild(conf);
+    card.appendChild(el('p', null, 'Recommendation: in the real app, environmentally friendly control measures appear here and are read aloud. We do not reproduce treatment advice in this example.'));
+    box.appendChild(card);
+  }
+
+  var chat = document.getElementById('expert-chat');
+  var callFb = document.getElementById('call-feedback');
+  var ctx = document.getElementById('call-context');
+  function resetCall() {
+    chat.innerHTML = '';
+    callFb.textContent = '';
+    callFb.className = 'feedback';
+    ctx.textContent = current
+      ? 'Your example: ' + current.title.toLowerCase() + '. The app says ' + current.result.toLowerCase() + ', ' + current.confidence + '% confidence (' + current.level + ').'
+      : 'Pick a photo in step 1 first.';
+  }
+  document.getElementById('btn-act').addEventListener('click', function () {
+    if (!current) { resetCall(); return; }
+    chat.innerHTML = '';
+    callFb.className = 'feedback ' + (current.id === 'spots' ? 'ok' : 'warn');
+    callFb.textContent = current.act;
+  });
+  document.getElementById('btn-send').addEventListener('click', function () {
+    if (!current) { resetCall(); return; }
+    chat.innerHTML = '';
+    var out = el('div', { 'class': 'bubble bot' });
+    out.appendChild(el('span', { 'class': 'who' }, 'You, to an example expert'));
+    out.appendChild(document.createTextNode('Diagnosis report: ' + current.result.toLowerCase() + ', ' + current.confidence + '% confidence. Photo attached.'));
+    var back = el('div', { 'class': 'bubble person' });
+    back.appendChild(el('span', { 'class': 'who' }, 'Example expert reply'));
+    back.appendChild(document.createTextNode(current.expert.text));
+    chat.appendChild(out); chat.appendChild(back);
+    callFb.className = 'feedback ok';
+    callFb.textContent = current.send;
+  });
+
+  renderResult();
+  resetCall();
+})();
+</script>
+</body>
+</html>

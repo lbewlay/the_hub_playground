@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photograph a plant so a model can learn from it (Taxonomy meets Tech) | AI Playground for Climate Action</title>
+<meta name="description" content="A walk-through with example data: the photo protocol student volunteers used to build FloraLebanon, a local plant image dataset.">
+<script>(function(){var d=document.documentElement,q=location.search,e=/[?&]embed=1(&|$)/.test(q)||(!/[?&]embed=0(&|$)/.test(q)&&window.self!==window.top);d.className+=' js'+(e?' embed':'');})();</script>
+<link rel="stylesheet" href="assets/playground.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <img class="logo" src="assets/ter-wordmark-navy.png" alt="The Engine Room" width="128" height="24">
+    <a class="site-title" href="index.html">AI Playground for Climate Action</a>
+  </div>
+  <span class="badge badge-example">Early version: example data</span>
+</header>
+
+<div class="app-layout">
+  <nav class="sidebar" aria-label="Playground">
+    <button class="contents-toggle" type="button" aria-expanded="false" aria-controls="sidebar-nav">Contents <span class="toggle-sign" aria-hidden="true">+</span></button>
+    <div class="sidebar-nav" id="sidebar-nav">
+      <h2>Playground</h2>
+      <ul>
+        <li><a href="index.html">Start here</a></li>
+      </ul>
+      <h2>Stories</h2>
+      <ul>
+        <li><a href="petabencana.html">Report a flood, then see it on the map<span class="lens-tag">PetaBencana, frugal</span></a></li>
+        <li><a href="floralebanon.html" aria-current="page">Photograph a plant so a model can learn from it<span class="lens-tag">Taxonomy meets Tech, community-centered</span></a></li>
+        <li><a href="ghana-crops.html">From photo to diagnosis, confidence and an expert<span class="lens-tag">Crop disease detection in Ghana, ecological</span></a></li>
+      </ul>
+      <h2>Experiment</h2>
+      <ul>
+        <li><a href="comparison.html">Large or small model: what does each cost?<span class="lens-tag">Coming</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="main-inner">
+      <p class="eyebrow">Taxonomy meets Tech <span class="badge badge-lens">Community-centered</span></p>
+      <h1>Photograph a plant so a model can learn from it</h1>
+      <p class="lede">A model can only learn what it is shown. In Lebanon, a university team and a biosphere reserve built their own plant dataset with student volunteers, by turning a taxonomist's knowledge into steps anyone with a phone can follow.</p>
+      <p>Taxonomy meets Tech works through the Saving Lebanon's Biodiversity Center Incubator at the American University of Beirut, with the Shouf Biosphere Reserve. Its volunteers built FloraLebanon, a verified collection of photos of local plants. In five steps, learn how they photographed plants and how experts decided which photos the model would see.</p>
+      <div class="note">
+        <p><span class="badge badge-example">Example data</span> The plant drawings and 'submissions' below are examples we drew. They are not photos from FloraLebanon or screens from the team's app, and no species is named. Nothing is uploaded from this page.</p>
+      </div>
+
+      <div data-walkthrough id="walkthrough">
+
+        <section class="step" data-title="Why local photos" aria-labelledby="s1-title">
+          <h2 id="s1-title"><span class="step-number">Step 1 of 5</span>Why the reserve needed its own photos</h2>
+          <p>The reserve's management had many photos of plants nobody had identified yet. Even a full list of names would not have helped them decide how to protect the reserve.</p>
+          <blockquote class="quote">
+            <p>'They said, we have all these images, if you want, we can give them to you on CDs and tell us what they are. Even if we identified all the plants, the information will remain a static list that can be posted on a website, but it is not functional.'</p>
+            <footer>Taxonomy meets Tech, from our case study</footer>
+          </blockquote>
+          <p>International image collections did not fill the gap. Plants from Lebanon and the region were underrepresented, and the photos that existed showed plants from distances and angles that do not match how people see them on a walk through the reserve. A model trained only on those photos might do well in testing and then struggle in the field.</p>
+          <p>So the team decided to build the data with the community: students and local volunteers, with experts checking every picture.</p>
+        </section>
+
+        <section class="step" data-title="The protocol" aria-labelledby="s2-title">
+          <h2 id="s2-title"><span class="step-number">Step 2 of 5</span>Four steps for every plant</h2>
+          <p>Rather than asking every volunteer to become a taxonomist, the team turned expert knowledge into a few clear actions. In their app, each step is one short sentence and one illustration. Here is our version of the four steps.</p>
+          <div class="example-frame">
+            <span class="badge badge-example">Example data</span>
+            <div id="protocol-cards"></div>
+            <p class="example-caption">Our drawings of the steps described in the case study, not the app's own illustrations.</p>
+          </div>
+          <p>The aim is variety that matches the field: different angles, different parts of the plant, close and far, and the plant through its seasons, in leaf, in flower and in fruit.</p>
+          <div class="stub">
+            <p class="stub-title">The app's own protocol screens: to confirm with Taxonomy meets Tech</p>
+            <p>The team's illustrations or screenshots of the app would go here. We have not asked to show them yet, so our drawings stand in.</p>
+          </div>
+        </section>
+
+        <section class="step" data-title="Keep or reject" aria-labelledby="s3-title">
+          <h2 id="s3-title"><span class="step-number">Step 3 of 5</span>Keep or reject?</h2>
+          <p>After every field trip, the team's experts went through the new photos and removed the blurred, repeated and poor ones before anything reached the model. Try it with these six example submissions.</p>
+          <div class="example-frame">
+            <span class="badge badge-example">Example data</span>
+            <ul class="choice-list" id="submission-list"></ul>
+          </div>
+          <p class="feedback" id="sort-summary" aria-live="polite"></p>
+          <div class="stub">
+            <p class="stub-title">Real FloraLebanon photos: to confirm with Taxonomy meets Tech</p>
+            <p>FloraLebanon is published by the university library under a license that does not allow changes to the images, so even resizing them for this page needs the team's agreement. Until then, we use drawings. You can read about the dataset in its public record: <a href="https://hdl.handle.net/10938/35274">FloraLebanon dataset, AUB ScholarWorks</a>.</p>
+          </div>
+        </section>
+
+        <section class="step" data-title="What happens next" aria-labelledby="s4-title">
+          <h2 id="s4-title"><span class="step-number">Step 4 of 5</span>From a photo to the dataset</h2>
+          <p>A photo that passes the check becomes part of the dataset, with what the app records alongside it.</p>
+          <ol class="flow" aria-label="From photo to dataset">
+            <li>A volunteer takes the photos, following the protocol</li>
+            <li>Experts check each one and keep or reject it</li>
+            <li>The photo is labeled, with its location and season</li>
+            <li>It joins the FloraLebanon dataset</li>
+            <li class="future">Later: identifying plants from a photo</li>
+          </ol>
+          <p>We stop here on purpose. When we spoke with the team, the identification feature was still being tested and not yet working, so this walk-through does not pretend to name a plant.</p>
+          <p>What kept volunteers coming back was partly the field trips themselves and partly the app: points for each validated photo, and missions to villages and species with few pictures so far.</p>
+          <div class="note">
+            <p><strong>A data question to think about.</strong> Every photo in a dataset like this carries a location. That is what makes it useful for conservation, and it is also a risk for a rare plant that someone might want to dig up. When should a dataset hide or blur where a plant grows, and who decides? This is our question for anyone building a similar project, not a description of the team's practice.</p>
+          </div>
+        </section>
+
+        <section class="step" data-title="Try it near you" aria-labelledby="s5-title">
+          <h2 id="s5-title"><span class="step-number">Step 5 of 5</span>Try it near you</h2>
+          <p>Find one plant nearby and photograph it the way a volunteer would. Your photos stay on your phone: nothing is uploaded, and this page does not ask for them.</p>
+          <ul class="checklist" id="checklist"></ul>
+          <div class="btn-row"><button class="btn" type="button" id="print-list">Print this checklist</button></div>
+          <p class="example-caption">The ticks are only on this page and are gone when you close it.</p>
+
+          <h3>The community-centered reading</h3>
+          <p>The decision that mattered most here was not which model to use but who builds the data and how. The team began by asking the reserve's staff which needs mattered most, then wrote a protocol simple enough for any volunteer and kept experts in charge of what counted as a good picture. The dataset belongs to the place it describes.</p>
+          <p><strong>To think about:</strong> whose knowledge would your tool need, and how could you turn it into steps other people can follow?</p>
+          <div class="stub">
+            <p class="stub-title">A link to the app: to confirm with Taxonomy meets Tech</p>
+            <p>We will add a link to the team's app once they confirm its current state and whether they want it shared here.</p>
+          </div>
+        </section>
+
+      </div>
+
+      <h2 class="shell-only">About this walk-through</h2>
+      <p class="shell-only">Based on The Engine Room's case study of Taxonomy meets Tech and our interview with the team, and on the public description of the FloraLebanon dataset.</p>
+
+      <footer class="site-footer">
+        <p>All drawings and submissions on this page are example data drawn by The Engine Room. They are not FloraLebanon images or screens from the team's app.</p>
+        <p><a href="index.html">Back to the Playground</a> &middot; Last updated November 25, 2026.</p>
+      </footer>
+    </div>
+  </main>
+</div>
+
+<script src="assets/playground.js"></script>
+<script src="data/floralebanon.example.js"></script>
+<script>
+(function () {
+  'use strict';
+  var D = window.EXAMPLE_PLANT;
+  var el = window.Playground.el;
+  var uid = 0;
+
+  /* A generic example plant, drawn in SVG. Not a real species. */
+  function plantSVG(o) {
+    o = o || {};
+    var id = 'p' + (uid++);
+    var view = o.view || 'side';
+    var s = o.scale || 1;
+    var dx = o.dx || 0;
+    var blur = o.blur ? '<filter id="' + id + 'b"><feGaussianBlur stdDeviation="' + o.blur + '"/></filter>' : '';
+    var g = '';
+    if (view === 'side') {
+      g += '<path d="M60 112 C60 90 58 70 60 40" stroke="#4E7A3A" stroke-width="4" fill="none"/>';
+      g += '<ellipse cx="44" cy="80" rx="16" ry="7" transform="rotate(-25 44 80)" fill="#6E9F4F"/>';
+      g += '<ellipse cx="77" cy="70" rx="16" ry="7" transform="rotate(25 77 70)" fill="#6E9F4F"/>';
+      g += '<ellipse cx="46" cy="56" rx="13" ry="6" transform="rotate(-30 46 56)" fill="#7FB05E"/>';
+      g += '<ellipse cx="74" cy="50" rx="12" ry="5.5" transform="rotate(30 74 50)" fill="#7FB05E"/>';
+      g += '<circle cx="60" cy="34" r="8" fill="#E8B33C"/><circle cx="60" cy="34" r="3" fill="#B8441F"/>';
+      g += '<path d="M30 112 Q60 104 90 112" stroke="#8B6B4A" stroke-width="3" fill="none"/>';
+    } else if (view === 'top') {
+      for (var i = 0; i < 6; i++) {
+        var a = i * 60;
+        g += '<ellipse cx="60" cy="45" rx="7" ry="20" transform="rotate(' + a + ' 60 65)" fill="' + (i % 2 ? '#6E9F4F' : '#7FB05E') + '"/>';
+      }
+      g += '<circle cx="60" cy="65" r="9" fill="#E8B33C"/><circle cx="60" cy="65" r="3.5" fill="#B8441F"/>';
+    } else {
+      g += '<path d="M20 70 C40 30 90 30 104 62 C90 96 40 100 20 70 Z" fill="#7FB05E" stroke="#4E7A3A" stroke-width="2"/>';
+      g += '<path d="M20 70 L104 62" stroke="#4E7A3A" stroke-width="2"/>';
+      for (var k = 0; k < 4; k++) {
+        var x = 36 + k * 16;
+        g += '<path d="M' + x + ' 69 L' + (x + 10) + ' ' + (50 - k) + ' M' + x + ' 69 L' + (x + 10) + ' ' + (86 - k) + '" stroke="#4E7A3A" stroke-width="1.3"/>';
+      }
+    }
+    var guide = o.guide === 'center' ? '<rect x="30" y="20" width="60" height="96" fill="none" stroke="#B8441F" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M60 10 V18 M60 118 V126 M10 68 H28 M92 68 H110" stroke="#B8441F" stroke-width="1.5"/>' : '';
+    var t = 'translate(' + (60 + dx) + ' 68) scale(' + s + ') translate(-60 -68)';
+    return '<svg viewBox="0 0 120 136" role="img" aria-label="' + (o.alt || 'Example drawing of a plant') + '">' +
+      '<defs>' + blur + '</defs>' +
+      '<rect x="1" y="1" width="118" height="134" rx="4" fill="#F4F1E8" stroke="#D8D2C0"/>' +
+      '<g transform="' + t + '"' + (o.blur ? ' filter="url(#' + id + 'b)"' : '') + '>' + g + '</g>' + guide + '</svg>';
+  }
+
+  /* Step 2: protocol cards with their own small step-through */
+  var cards = document.getElementById('protocol-cards');
+  var cardEls = [];
+  D.protocol.forEach(function (p, i) {
+    var c = el('div', { 'class': 'card protocol-card', id: 'protocol-' + p.id });
+    var fig = el('div');
+    fig.innerHTML = plantSVG({ view: p.view, guide: p.guide, alt: 'Example drawing: ' + p.title.toLowerCase() });
+    var body = el('div');
+    body.appendChild(el('p', { 'class': 'step-number' }, 'Photo step ' + (i + 1) + ' of ' + D.protocol.length));
+    body.appendChild(el('h3', null, p.title));
+    body.appendChild(el('p', null, p.text));
+    if (p.id === 'close') {
+      body.appendChild(el('p', { 'class': 'example-caption' }, 'Parts to cover: ' + D.parts.join(', ') + '. Stages: ' + D.stages.join(', ') + '.'));
+    }
+    c.appendChild(fig); c.appendChild(body);
+    cards.appendChild(c);
+    cardEls.push(c);
+  });
+  var cardIndex = 0;
+  var cardNav = el('div', { 'class': 'btn-row' });
+  var prevCard = el('button', { 'class': 'btn', type: 'button' }, 'Previous photo step');
+  var nextCard = el('button', { 'class': 'btn btn-primary', type: 'button' }, 'Next photo step');
+  var cardLive = el('p', { 'class': 'visually-hidden', 'aria-live': 'polite' });
+  function showCard(i) {
+    cardIndex = Math.max(0, Math.min(cardEls.length - 1, i));
+    cardEls.forEach(function (c, j) { c.hidden = j !== cardIndex; });
+    prevCard.disabled = cardIndex === 0;
+    nextCard.disabled = cardIndex === cardEls.length - 1;
+    cardLive.textContent = 'Photo step ' + (cardIndex + 1) + ': ' + D.protocol[cardIndex].title;
+    window.Playground.sendHeight();
+  }
+  prevCard.addEventListener('click', function () { showCard(cardIndex - 1); });
+  nextCard.addEventListener('click', function () { showCard(cardIndex + 1); });
+  cardNav.appendChild(prevCard); cardNav.appendChild(nextCard);
+  cards.appendChild(cardNav); cards.appendChild(cardLive);
+  showCard(0);
+
+  /* Step 3: keep or reject */
+  var answers = {};
+  var list = document.getElementById('submission-list');
+  D.submissions.forEach(function (sub) {
+    var li = el('li', { 'class': 'choice protocol-card' });
+    var fig = el('div');
+    fig.innerHTML = plantSVG({ view: sub.view, blur: sub.blur, dx: sub.dx, scale: sub.scale, alt: sub.label + ', example drawing' });
+    var body = el('div');
+    body.appendChild(el('p', { 'class': 'post-meta' }, sub.label + (sub.duplicate ? ' (looks familiar?)' : '')));
+    var row = el('div', { 'class': 'btn-row', role: 'group', 'aria-label': 'Keep or reject ' + sub.label });
+    var keep = el('button', { 'class': 'btn', type: 'button', 'aria-pressed': 'false' }, 'Keep');
+    var rej = el('button', { 'class': 'btn', type: 'button', 'aria-pressed': 'false' }, 'Reject');
+    var res = el('p', { 'class': 'choice-result', 'aria-live': 'polite' });
+    function pick(k) {
+      keep.setAttribute('aria-pressed', k ? 'true' : 'false');
+      rej.setAttribute('aria-pressed', k ? 'false' : 'true');
+      var right = k === sub.keep;
+      answers[sub.id] = right;
+      li.classList.toggle('is-right', right);
+      li.classList.toggle('is-wrong', !right);
+      res.textContent = (right ? 'Agreed. ' : 'The experts would decide differently. ') + sub.why;
+      summary();
+    }
+    keep.addEventListener('click', function () { pick(true); });
+    rej.addEventListener('click', function () { pick(false); });
+    row.appendChild(keep); row.appendChild(rej);
+    body.appendChild(row); body.appendChild(res);
+    li.appendChild(fig); li.appendChild(body);
+    list.appendChild(li);
+  });
+  function summary() {
+    var out = document.getElementById('sort-summary');
+    var ids = Object.keys(answers);
+    if (ids.length < D.submissions.length) { out.textContent = ''; out.className = 'feedback'; return; }
+    var right = ids.filter(function (k) { return answers[k]; }).length;
+    out.className = 'feedback ok';
+    out.textContent = 'You agreed with the expert check on ' + right + ' of ' + D.submissions.length + '. Only two of the six would reach the model. Careful checking means fewer photos, but ones the model can learn from.';
+  }
+
+  /* Step 5: checklist */
+  var cl = document.getElementById('checklist');
+  D.checklist.forEach(function (item, i) {
+    var li = el('li');
+    var cb = el('input', { type: 'checkbox', id: 'check-' + i });
+    var lab = el('label', { 'for': 'check-' + i }, item);
+    li.appendChild(cb); li.appendChild(lab);
+    cl.appendChild(li);
+  });
+  document.getElementById('print-list').addEventListener('click', function () { window.print(); });
+})();
+</script>
+</body>
+</html>

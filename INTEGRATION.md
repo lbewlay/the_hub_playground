@@ -71,6 +71,12 @@ no scrollbar inside the frame:
 </script>
 ```
 
+Replace `https://PLAYGROUND-HOST` in the first line with the app's exact origin:
+scheme and host only, no path and no trailing slash (for example
+`https://playground.example.org`). The check makes sure only Playground pages can
+resize frames. If you would rather not touch site-wide settings, the same script can
+go at the end of the HTML card, after the iframe; it then only works on that post.
+
 Without the script, the iframe uses the fixed height in its `style` attribute (table
 above) and scrolls inside itself when a step is taller, which is mostly on phones.
 Heights measured on November 25, 2026 at a 720px column: the tallest step is about

@@ -291,7 +291,7 @@ legend { font-weight: 500; color: var(--navy); padding: 0 6px; }
 .embed .topbar, .embed .sidebar, .embed .site-footer, .embed .shell-only { display: none !important; }
 .embed .app-layout { display: block; max-width: none; }
 .embed main { padding: 4px 4px 12px; }
-.embed .main-inner { max-width: none; }
+.embed .main-inner { max-width: 960px; margin: 0 auto; }
 .embed body, body.embed { background: transparent; }
 
 @media (prefers-reduced-motion: reduce) {

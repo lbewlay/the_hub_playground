@@ -53,7 +53,7 @@
       <div data-walkthrough id="walkthrough">
 
         <section class="step" data-title="Pick a photo" aria-labelledby="s1-title">
-          <h2 id="s1-title"><span class="step-number">Step 1 of 5</span>Pick a photo</h2>
+          <h2 id="s1-title"><span class="step-number">Step one of five</span>Pick a photo</h2>
           <p>In the app, a farmer takes a picture of the affected part of the plant with the phone's camera, or picks one from the gallery. Choose one of these three example cashew leaves. You can come back and try the others.</p>
           <div class="example-frame">
             <span class="badge badge-example">Example data</span>
@@ -65,7 +65,7 @@
         </section>
 
         <section class="step" data-title="The diagnosis" aria-labelledby="s2-title">
-          <h2 id="s2-title"><span class="step-number">Step 2 of 5</span>The diagnosis, and how sure it is</h2>
+          <h2 id="s2-title"><span class="step-number">Step two of five</span>The diagnosis, and how sure it is</h2>
           <p>The app names the likely problem and gives a confidence level: how sure the model is about its own guess. The team described it like this:</p>
           <blockquote class="quote">
             <p>'It tells you this is probably say anthracnose, but my confidence is probably 70%. Then if you are not sure, you could then send the picture in the diagnosis by a click of a button to the consultant.'</p>
@@ -80,7 +80,7 @@
         </section>
 
         <section class="step" data-title="Your call" aria-labelledby="s3-title">
-          <h2 id="s3-title"><span class="step-number">Step 3 of 5</span>Your call: act on it, or ask an expert?</h2>
+          <h2 id="s3-title"><span class="step-number">Step three of five</span>Your call: act on it, or ask an expert?</h2>
           <p>The app keeps people in the loop. Three experts in crop disease agreed to have their phone numbers in the app, and with one button a farmer can send the diagnosis to one of them, who confirms it or says it is wrong.</p>
           <div class="example-frame">
             <span class="badge badge-example">Example data</span>
@@ -96,7 +96,7 @@
         </section>
 
         <section class="step" data-title="The recommendation" aria-labelledby="s4-title">
-          <h2 id="s4-title"><span class="step-number">Step 4 of 5</span>What the app recommends, and in which language</h2>
+          <h2 id="s4-title"><span class="step-number">Step four of five</span>What the app recommends, and in which language</h2>
           <p>Farmers had seen chemical sprays harm the soil they depend on for future harvests, so the app recommends environmentally friendly remedies. When we spoke with the team, they gave the example of fall armyworm on maize, one of the crops in the first version: farmers were shown how to make a spray from neem leaves. That is the team's example, not advice from us.</p>
           <p><span class="badge badge-pending">To confirm with the team</span> We will check with the team that they are comfortable with this example on the page.</p>
           <p>Language shaped the design too. The diagnosis comes back in Twi, one of the most widely spoken languages in Ghana. The recommendations are read aloud, but in English, because text to speech for Twi was not available. The app works in a mix of the two until it is.</p>
@@ -107,7 +107,7 @@
         </section>
 
         <section class="step" data-title="When the rains stopped" aria-labelledby="s5-title">
-          <h2 id="s5-title"><span class="step-number">Step 5 of 5</span>When the rains stopped</h2>
+          <h2 id="s5-title"><span class="step-number">Step five of five</span>When the rains stopped</h2>
           <p>The first version covered four crops: cassava, cashew, maize and tomato. It worked, until a year when the weather turned.</p>
           <blockquote class="quote">
             <p>'That particular year, what you realize is that even if you use the app, you see that it will identify every crop as sick.'</p>
@@ -194,7 +194,7 @@
     var box = document.getElementById('result-card');
     box.innerHTML = '';
     if (!current) {
-      box.appendChild(el('p', { 'class': 'empty' }, 'Pick a photo in step 1 first.'));
+      box.appendChild(el('p', { 'class': 'empty' }, 'Pick a photo in step one first.'));
       return;
     }
     var card = el('div', { 'class': 'result-card' });
@@ -221,7 +221,7 @@
     callFb.className = 'feedback';
     ctx.textContent = current
       ? 'Your example: ' + current.title.toLowerCase() + '. The app says ' + current.result.toLowerCase() + ', ' + current.confidence + '% confidence (' + current.level + ').'
-      : 'Pick a photo in step 1 first.';
+      : 'Pick a photo in step one first.';
   }
   document.getElementById('btn-act').addEventListener('click', function () {
     if (!current) { resetCall(); return; }

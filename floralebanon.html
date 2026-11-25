@@ -53,7 +53,7 @@
       <div data-walkthrough id="walkthrough">
 
         <section class="step" data-title="Why local photos" aria-labelledby="s1-title">
-          <h2 id="s1-title"><span class="step-number">Step 1 of 5</span>Why the reserve needed its own photos</h2>
+          <h2 id="s1-title"><span class="step-number">Step one of five</span>Why the reserve needed its own photos</h2>
           <p>The reserve's management had many photos of plants nobody had identified yet. Even a full list of names would not have helped them decide how to protect the reserve.</p>
           <blockquote class="quote">
             <p>'They said, we have all these images, if you want, we can give them to you on CDs and tell us what they are. Even if we identified all the plants, the information will remain a static list that can be posted on a website, but it is not functional.'</p>
@@ -64,7 +64,7 @@
         </section>
 
         <section class="step" data-title="The protocol" aria-labelledby="s2-title">
-          <h2 id="s2-title"><span class="step-number">Step 2 of 5</span>Four steps for every plant</h2>
+          <h2 id="s2-title"><span class="step-number">Step two of five</span>Four steps for every plant</h2>
           <p>Rather than asking every volunteer to become a taxonomist, the team turned expert knowledge into a few clear actions. In their app, each step is one short sentence and one illustration. Here is our version of the four steps.</p>
           <div class="example-frame">
             <span class="badge badge-example">Example data</span>
@@ -79,7 +79,7 @@
         </section>
 
         <section class="step" data-title="Keep or reject" aria-labelledby="s3-title">
-          <h2 id="s3-title"><span class="step-number">Step 3 of 5</span>Keep or reject?</h2>
+          <h2 id="s3-title"><span class="step-number">Step three of five</span>Keep or reject?</h2>
           <p>After every field trip, the team's experts went through the new photos and removed the blurred, repeated and poor ones before anything reached the model. Try it with these six example submissions.</p>
           <div class="example-frame">
             <span class="badge badge-example">Example data</span>
@@ -93,7 +93,7 @@
         </section>
 
         <section class="step" data-title="What happens next" aria-labelledby="s4-title">
-          <h2 id="s4-title"><span class="step-number">Step 4 of 5</span>From a photo to the dataset</h2>
+          <h2 id="s4-title"><span class="step-number">Step four of five</span>From a photo to the dataset</h2>
           <p>A photo that passes the check becomes part of the dataset, with what the app records alongside it.</p>
           <ol class="flow" aria-label="From photo to dataset">
             <li>A volunteer takes the photos, following the protocol</li>
@@ -110,7 +110,7 @@
         </section>
 
         <section class="step" data-title="Try it near you" aria-labelledby="s5-title">
-          <h2 id="s5-title"><span class="step-number">Step 5 of 5</span>Try it near you</h2>
+          <h2 id="s5-title"><span class="step-number">Step five of five</span>Try it near you</h2>
           <p>Find one plant nearby and photograph it the way a volunteer would. Your photos stay on your phone: nothing is uploaded, and this page does not ask for them.</p>
           <ul class="checklist" id="checklist"></ul>
           <div class="btn-row"><button class="btn" type="button" id="print-list">Print this checklist</button></div>
@@ -194,7 +194,7 @@
     var fig = el('div');
     fig.innerHTML = plantSVG({ view: p.view, guide: p.guide, alt: 'Example drawing: ' + p.title.toLowerCase() });
     var body = el('div');
-    body.appendChild(el('p', { 'class': 'step-number' }, 'Photo step ' + (i + 1) + ' of ' + D.protocol.length));
+    body.appendChild(el('p', { 'class': 'step-number' }, 'Photo step ' + ['one','two','three','four'][i] + ' of four'));
     body.appendChild(el('h3', null, p.title));
     body.appendChild(el('p', null, p.text));
     if (p.id === 'close') {

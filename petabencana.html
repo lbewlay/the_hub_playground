@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Report a flood, then see it on the map (PetaBencana) | AI Playground for Climate Action</title>
+<meta name="description" content="A walk-through with example data: follow one flood report from a social media post to a public map, as on PetaBencana.">
+<script>(function(){var d=document.documentElement,q=location.search,e=/[?&]embed=1(&|$)/.test(q)||(!/[?&]embed=0(&|$)/.test(q)&&window.self!==window.top);d.className+=' js'+(e?' embed':'');})();</script>
+<link rel="stylesheet" href="assets/playground.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <img class="logo" src="assets/ter-wordmark-navy.png" alt="The Engine Room" width="128" height="24">
+    <a class="site-title" href="index.html">AI Playground for Climate Action</a>
+  </div>
+  <span class="badge badge-example">Early version: example data</span>
+</header>
+
+<div class="app-layout">
+  <nav class="sidebar" aria-label="Playground">
+    <button class="contents-toggle" type="button" aria-expanded="false" aria-controls="sidebar-nav">Contents <span class="toggle-sign" aria-hidden="true">+</span></button>
+    <div class="sidebar-nav" id="sidebar-nav">
+      <h2>Playground</h2>
+      <ul>
+        <li><a href="index.html">Start here</a></li>
+      </ul>
+      <h2>Stories</h2>
+      <ul>
+        <li><a href="petabencana.html" aria-current="page">Report a flood, then see it on the map<span class="lens-tag">PetaBencana, frugal</span></a></li>
+        <li><a href="floralebanon.html">Photograph a plant so a model can learn from it<span class="lens-tag">Taxonomy meets Tech, community-centered</span></a></li>
+        <li><a href="ghana-crops.html">From photo to diagnosis, confidence and an expert<span class="lens-tag">Crop disease detection in Ghana, ecological</span></a></li>
+      </ul>
+      <h2>Experiment</h2>
+      <ul>
+        <li><a href="comparison.html">Large or small model: what does each cost?<span class="lens-tag">Coming</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="main-inner">
+      <p class="eyebrow">PetaBencana <span class="badge badge-lens">Frugal</span></p>
+      <h1>Report a flood, then see it on the map</h1>
+      <p class="lede">PetaBencana uses software for what computers do well, finding flood posts and replying at scale, and asks people standing in the water to say what is happening, in the terms they already use.</p>
+      <p>PetaBencana runs public disaster maps in Indonesia and, as MapaKalamidad, in the Philippines. Instead of trying to predict floods, the team asks people where it floods now. In five short steps, follow one report from a social media post to the public map.</p>
+      <div class="note">
+        <p><span class="badge badge-example">Example data</span> The posts, the city, the reports and the map below are examples we wrote and drew. They are not PetaBencana's screens or data. Nothing you choose or type leaves your browser.</p>
+      </div>
+
+      <div data-walkthrough id="walkthrough">
+
+        <section class="step" data-title="The posts" aria-labelledby="s1-title">
+          <h2 id="s1-title"><span class="step-number">Step 1 of 5</span>Which posts are about a flood happening now?</h2>
+          <p>When it rains hard, people post about it. PetaBencana's system looks for posts about disasters using language and location. Read these five example posts and decide which ones describe a flood happening now.</p>
+          <div class="example-frame">
+            <span class="badge badge-example">Example data</span>
+            <ul class="choice-list" id="post-list"></ul>
+          </div>
+          <p class="feedback" id="posts-summary" aria-live="polite"></p>
+          <p>Software that reads posts at this speed will get some wrong, especially warnings, jokes and memories. That is why the next step asks a person.</p>
+        </section>
+
+        <section class="step" data-title="The reply" aria-labelledby="s2-title">
+          <h2 id="s2-title"><span class="step-number">Step 2 of 5</span>An automated reply asks the person</h2>
+          <p>When a post looks like a flood report, the system replies automatically. It asks whether the person is really in a flood and, if they are, sends a link to a report form. Each link is for one report.</p>
+          <div class="example-frame">
+            <span class="badge badge-example">Example data</span>
+            <div class="chat" aria-label="Example conversation">
+              <div class="bubble person"><span class="who">@example_resident_1</span>Water up to my knees on the main road in Canal Ward. Motorbikes cannot get through.</div>
+              <div class="bubble bot"><span class="who">Example flood map account</span>Hello, are you in a flood right now? If you are, you can add it to the public flood map here: <u>example report link</u></div>
+              <div class="bubble person"><span class="who">@example_resident_1</span>Yes, still raining. Opening it now.</div>
+            </div>
+            <p class="example-caption">Our example wording, not the platform's real message.</p>
+          </div>
+          <p>The team tried this early on, and the response told them they were onto something:</p>
+          <blockquote class="quote">
+            <p>'When we experimented with deploying an automated reply for the first time, asking people if they were really in a flood, we got thousands of reports in a few hours.'</p>
+            <footer>PetaBencana, from our case study <span class="badge badge-pending">Quote check pending</span></footer>
+          </blockquote>
+        </section>
+
+        <section class="step" data-title="The report" aria-labelledby="s3-title">
+          <h2 id="s3-title"><span class="step-number">Step 3 of 5</span>Make one report</h2>
+          <p>Now you are the person in the flood. Say where you are, then how deep the water is.</p>
+
+          <fieldset>
+            <legend>Where are you?</legend>
+            <p>Tap a district on the example map, or choose it from the list.</p>
+            <div class="example-frame">
+              <span class="badge badge-example">Example data</span>
+              <div class="map-wrap" id="pick-map"></div>
+            </div>
+            <label for="district-select">District</label>
+            <select id="district-select"><option value="">Choose a district</option></select>
+          </fieldset>
+
+          <fieldset>
+            <legend>How deep is the water?</legend>
+            <p>People describe a flood by their own body: up to the ankle, the knee or the waist. PetaBencana's report uses a simple visual slider with a drawing of a person and a car wheel, and turns the answer into centimeters.</p>
+            <div class="example-frame">
+              <span class="badge badge-example">Example data</span>
+              <div class="depth-tool">
+                <div class="depth-figure" id="depth-figure"></div>
+                <div>
+                  <label for="depth">Water depth</label>
+                  <input type="range" id="depth" min="0" max="200" step="5" value="50" aria-describedby="depth-readout">
+                  <p class="depth-readout" id="depth-readout" aria-live="polite"></p>
+                  <p class="example-caption">Our drawing and our conversion from body marks to centimeters, to show the idea. Not PetaBencana's slider. Bands from PetaBencana's public documentation: under 70 cm minor, 70 to 150 cm moderate, above 150 cm severe.</p>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <label for="report-text">Anything to add? (optional)</label>
+          <input type="text" id="report-text" maxlength="120" placeholder="For example: road closed to motorbikes">
+          <p class="example-caption">This stays in your browser. Nothing is sent.</p>
+
+          <div class="note">
+            <p><strong>What the report does not ask for:</strong> your name, your account handle or anything else about you. PetaBencana keeps reports anonymous and stores no personal information. The real form also takes one optional photo. Ours does not, because this page collects nothing.</p>
+          </div>
+
+          <div class="stub">
+            <p class="stub-title">The real report form: to confirm with PetaBencana</p>
+            <p>Screenshots of PetaBencana's own report form would go here. We have not asked for permission to show them yet, so the drawing above stands in for them.</p>
+          </div>
+          <div class="btn-row"><button class="btn btn-primary" type="button" id="submit-report">Add my example report to the map</button></div>
+          <p class="feedback" id="report-feedback" aria-live="polite"></p>
+        </section>
+
+        <section class="step" data-title="The map" aria-labelledby="s4-title">
+          <h2 id="s4-title"><span class="step-number">Step 4 of 5</span>Your report on the map</h2>
+          <p>Reports appear on a public map as they come in. Each one shows the depth in centimeters and as a body reference, so anyone can read it.</p>
+          <div class="example-frame">
+            <span class="badge badge-example">Example data</span>
+            <div class="btn-row" role="group" aria-label="Show reports from">
+              <button class="btn" type="button" data-window="60" aria-pressed="true">Last hour</button>
+              <button class="btn" type="button" data-window="1440" aria-pressed="false">Last day</button>
+            </div>
+            <div class="map-wrap" id="result-map"></div>
+            <div class="map-legend" aria-hidden="true"><span class="l-minor">Minor, under 70 cm</span><span class="l-moderate">Moderate, 70 to 150 cm</span><span class="l-severe">Severe, above 150 cm</span></div>
+            <h3>The same reports as a list</h3>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th scope="col">Where</th><th scope="col">Depth</th><th scope="col">When</th><th scope="col">Note</th></tr></thead>
+                <tbody id="report-rows"></tbody>
+              </table>
+            </div>
+            <p class="example-caption">Example reports in an invented city.</p>
+          </div>
+          <p>In the real system, the map is only part of the loop. Government agencies check reports with their own field staff and post official updates back through the same platform, so the people who reported can see the response.</p>
+          <div class="stub">
+            <p class="stub-title">The live map and real report data: to confirm with PetaBencana</p>
+            <p>PetaBencana publishes its reports as open data. A later version of this page could show a small, dated extract of real reports instead of our examples. We will only do that if the foundation agrees and tells us how they want it credited.</p>
+          </div>
+        </section>
+
+        <section class="step" data-title="Your scale" aria-labelledby="s5-title">
+          <h2 id="s5-title"><span class="step-number">Step 5 of 5</span>What would your scale be?</h2>
+          <p>Ankle, knee and waist work because everyone carries them. Where you live, people might measure water by something else they all know.</p>
+          <fieldset>
+            <legend>How do people where you live say how deep the water is?</legend>
+            <div class="btn-row" id="scale-ideas"></div>
+            <label for="my-scale">Or write your own</label>
+            <input type="text" id="my-scale" maxlength="60" placeholder="For example: the second stair">
+          </fieldset>
+          <p class="feedback ok" id="scale-echo" aria-live="polite"></p>
+          <p class="example-caption">What you write stays on this page and is gone when you close it.</p>
+
+          <h3>The frugal reading</h3>
+          <p>PetaBencana chose not to build a model that predicts floods. Floods are shaped by human decisions and failing infrastructure as much as by rain, so the team built on what people already do in a flood: tell each other what is happening. The software finds the posts and sends the replies; people supply the knowledge; the result is open to everyone.</p>
+          <p>The team also argues that bigger is not better for this kind of work:</p>
+          <blockquote class="quote">
+            <p>'Besides being far more energy efficient and better for the environment, smaller better-curated datasets are also much more accurate than large models.'</p>
+            <footer>PetaBencana, from our case study <span class="badge badge-pending">Quote check pending</span></footer>
+          </blockquote>
+          <p>We are preparing an experiment that puts this claim to a simple test: <a href="comparison.html">large or small model, what does each cost?</a></p>
+          <p><strong>To think about:</strong> in your own work, where are people already sharing the information you need, and what would it take to ask them directly?</p>
+        </section>
+
+      </div>
+
+      <h2 class="shell-only">About this walk-through</h2>
+      <p class="shell-only">Based on The Engine Room's case study of PetaBencana and our interview with the team. PetaBencana's public site: <a href="https://petabencana.id">petabencana.id</a>.</p>
+
+      <footer class="site-footer">
+        <p>All posts, places, reports and maps on this page are example data written by The Engine Room. They are not PetaBencana's data or screens.</p>
+        <p><a href="index.html">Back to the Playground</a> &middot; Last updated November 25, 2026.</p>
+      </footer>
+    </div>
+  </main>
+</div>
+
+<script src="assets/playground.js"></script>
+<script src="data/petabencana.example.js"></script>
+<script>
+(function () {
+  'use strict';
+  var D = window.EXAMPLE_FLOOD;
+  var el = window.Playground.el;
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  function svg(tag, attrs) {
+    var e = document.createElementNS(SVGNS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  /* Depth helpers: body reference is our example conversion */
+  function bodyRef(cm) {
+    if (cm === 0) return 'no standing water';
+    if (cm < 25) return 'about ankle height';
+    if (cm < 70) return 'about knee height';
+    if (cm < 115) return 'about waist height';
+    return 'above the waist';
+  }
+  function band(cm) {
+    if (cm < 70) return { id: 'minor', label: 'minor', color: '#F2C14E' };
+    if (cm <= 150) return { id: 'moderate', label: 'moderate', color: '#E07B39' };
+    return { id: 'severe', label: 'severe', color: '#8E2C1C' };
+  }
+  function districtName(id) {
+    for (var i = 0; i < D.districts.length; i++) if (D.districts[i].id === id) return D.districts[i].name;
+    return '';
+  }
+  function ago(m) {
+    if (m === 0) return 'just now';
+    if (m < 60) return m + ' minutes ago';
+    var h = Math.round(m / 60);
+    return h === 1 ? 'one hour ago' : h + ' hours ago';
+  }
+
+  /* Step 1: sort posts */
+  var answered = {};
+  var list = document.getElementById('post-list');
+  D.posts.forEach(function (p) {
+    var li = el('li', { 'class': 'choice' });
+    li.appendChild(el('div', { 'class': 'post-meta' }, p.handle + ' · ' + p.time));
+    li.appendChild(el('div', { 'class': 'post-text' }, p.text));
+    var row = el('div', { 'class': 'btn-row', role: 'group', 'aria-label': 'Is this a flood happening now?' });
+    var yes = el('button', { 'class': 'btn', type: 'button', 'aria-pressed': 'false' }, 'Flood happening now');
+    var no = el('button', { 'class': 'btn', type: 'button', 'aria-pressed': 'false' }, 'Not a flood now');
+    var res = el('p', { 'class': 'choice-result', 'aria-live': 'polite' });
+    function pick(choice) {
+      yes.setAttribute('aria-pressed', choice ? 'true' : 'false');
+      no.setAttribute('aria-pressed', choice ? 'false' : 'true');
+      var right = choice === p.now;
+      answered[p.id] = right;
+      li.classList.toggle('is-right', right);
+      li.classList.toggle('is-wrong', !right);
+      res.textContent = (right ? 'Yes. ' : 'Not quite. ') + p.why;
+      summarize();
+    }
+    yes.addEventListener('click', function () { pick(true); });
+    no.addEventListener('click', function () { pick(false); });
+    row.appendChild(yes); row.appendChild(no);
+    li.appendChild(row); li.appendChild(res);
+    list.appendChild(li);
+  });
+  function summarize() {
+    var ids = Object.keys(answered);
+    var out = document.getElementById('posts-summary');
+    if (ids.length < D.posts.length) { out.textContent = ''; out.className = 'feedback'; return; }
+    var right = ids.filter(function (k) { return answered[k]; }).length;
+    out.className = 'feedback ok';
+    out.textContent = 'You sorted ' + right + ' of ' + D.posts.length + ' as we would. Two of the five are about a flood happening now.';
+  }
+
+  /* Maps */
+  function drawMap(container, opts) {
+    var s = svg('svg', { viewBox: '0 0 600 360', 'class': 'example-map' + (opts.pick ? ' map-pick' : ''), role: opts.pick ? 'group' : 'img', 'aria-label': opts.label });
+    D.districts.forEach(function (d) {
+      var poly = svg('polygon', { points: d.points, fill: '#E9EEF1', stroke: '#B8C2C9', 'stroke-width': '2', 'data-id': d.id });
+      if (opts.pick) {
+        poly.style.cursor = 'pointer';
+        poly.addEventListener('click', function () { opts.onPick(d.id); });
+      }
+      s.appendChild(poly);
+    });
+    s.appendChild(svg('path', { d: 'M -10 150 C 120 170, 200 240, 300 250 S 480 200, 610 260', fill: 'none', stroke: '#9CC3DB', 'stroke-width': '14', 'stroke-linecap': 'round', 'pointer-events': 'none' }));
+    D.districts.forEach(function (d) {
+      var t = svg('text', { x: d.cx, y: d.cy, 'text-anchor': 'middle', 'font-size': '16', fill: '#5F5F5F', 'pointer-events': 'none', 'font-family': 'Roboto, Arial, sans-serif' });
+      t.textContent = d.name;
+      s.appendChild(t);
+    });
+    var pins = svg('g', {});
+    s.appendChild(pins);
+    container.innerHTML = '';
+    container.appendChild(s);
+    return { svg: s, pins: pins };
+  }
+  function addPin(g, r, mine) {
+    var b = band(r.cm);
+    var pin = svg('g', {});
+    pin.appendChild(svg('circle', { cx: r.x, cy: r.y, r: mine ? 13 : 10, fill: b.color, stroke: mine ? '#1F2D39' : '#fff', 'stroke-width': mine ? 4 : 3 }));
+    var title = svg('title', {});
+    title.textContent = (mine ? 'Your example report: ' : '') + districtName(r.district) + ', ' + r.cm + ' cm, ' + bodyRef(r.cm) + ', ' + ago(r.minutesAgo);
+    pin.appendChild(title);
+    if (mine) {
+      var label = svg('text', { x: r.x + 18, y: r.y + 5, 'font-size': '15', fill: '#1F2D39', 'font-weight': '500', 'font-family': 'Roboto, Arial, sans-serif' });
+      label.textContent = 'You';
+      pin.appendChild(label);
+    }
+    g.appendChild(pin);
+  }
+
+  /* Step 3: report */
+  var mine = { district: '', x: 0, y: 0, cm: 50, minutesAgo: 0, text: '' };
+  var submitted = false;
+  var select = document.getElementById('district-select');
+  D.districts.forEach(function (d) { select.appendChild(el('option', { value: d.id }, d.name)); });
+  var pickMap = drawMap(document.getElementById('pick-map'), {
+    pick: true, label: 'Example map of an invented city, six districts', onPick: function (id) { setDistrict(id); }
+  });
+  function setDistrict(id) {
+    mine.district = id;
+    select.value = id;
+    var d = D.districts.filter(function (x) { return x.id === id; })[0];
+    pickMap.pins.innerHTML = '';
+    if (!d) return;
+    mine.x = d.cx + 10; mine.y = d.cy - 26;
+    addPin(pickMap.pins, mine, true);
+    var polys = pickMap.svg.querySelectorAll('polygon');
+    for (var i = 0; i < polys.length; i++) polys[i].setAttribute('fill', polys[i].getAttribute('data-id') === id ? '#FFF4D6' : '#E9EEF1');
+  }
+  select.addEventListener('change', function () { setDistrict(select.value); });
+
+  // depth figure: 1 unit = 1 cm, ground at y = 210
+  var fig = svg('svg', { viewBox: '0 0 150 220', role: 'img', 'aria-label': 'Drawing of a person and a car wheel standing in water, with ankle, knee and waist marked' });
+  var water = svg('rect', { x: 0, y: 160, width: 150, height: 50, fill: '#9CC3DB', opacity: '0.75' });
+  fig.appendChild(svg('line', { x1: 0, y1: 210, x2: 150, y2: 210, stroke: '#5F5F5F', 'stroke-width': 2 }));
+  // wheel
+  fig.appendChild(svg('circle', { cx: 112, cy: 178, r: 32, fill: 'none', stroke: '#434343', 'stroke-width': 7 }));
+  fig.appendChild(svg('circle', { cx: 112, cy: 178, r: 12, fill: '#888', stroke: 'none' }));
+  // person
+  fig.appendChild(svg('circle', { cx: 45, cy: 52, r: 12, fill: '#1F2D39' }));
+  fig.appendChild(svg('line', { x1: 45, y1: 64, x2: 45, y2: 115, stroke: '#1F2D39', 'stroke-width': 9, 'stroke-linecap': 'round' }));
+  fig.appendChild(svg('line', { x1: 45, y1: 75, x2: 25, y2: 110, stroke: '#1F2D39', 'stroke-width': 6, 'stroke-linecap': 'round' }));
+  fig.appendChild(svg('line', { x1: 45, y1: 75, x2: 65, y2: 110, stroke: '#1F2D39', 'stroke-width': 6, 'stroke-linecap': 'round' }));
+  fig.appendChild(svg('line', { x1: 45, y1: 113, x2: 35, y2: 208, stroke: '#1F2D39', 'stroke-width': 7, 'stroke-linecap': 'round' }));
+  fig.appendChild(svg('line', { x1: 45, y1: 113, x2: 55, y2: 208, stroke: '#1F2D39', 'stroke-width': 7, 'stroke-linecap': 'round' }));
+  D.bodyMarks.forEach(function (m) {
+    var y = 210 - m.cm;
+    fig.appendChild(svg('line', { x1: 2, y1: y, x2: 72, y2: y, stroke: '#B8441F', 'stroke-width': 1.5, 'stroke-dasharray': '4 3' }));
+    var t = svg('text', { x: 2, y: y - 3, 'font-size': '11', fill: '#B8441F', 'font-family': 'Roboto, Arial, sans-serif' });
+    t.textContent = m.label;
+    fig.appendChild(t);
+  });
+  fig.appendChild(water);
+  document.getElementById('depth-figure').appendChild(fig);
+
+  var depth = document.getElementById('depth');
+  var readout = document.getElementById('depth-readout');
+  function updateDepth() {
+    var cm = parseInt(depth.value, 10);
+    mine.cm = cm;
+    var h = Math.min(cm, 205);
+    water.setAttribute('y', 210 - h);
+    water.setAttribute('height', h);
+    var b = band(cm);
+    readout.textContent = cm + ' cm, ' + bodyRef(cm) + ' (' + b.label + ')';
+    depth.setAttribute('aria-valuetext', readout.textContent);
+  }
+  depth.addEventListener('input', updateDepth);
+  updateDepth();
+
+  document.getElementById('submit-report').addEventListener('click', function () {
+    var fb = document.getElementById('report-feedback');
+    if (!mine.district) {
+      fb.className = 'feedback warn';
+      fb.textContent = 'Choose where you are first, on the map or from the list.';
+      return;
+    }
+    mine.text = document.getElementById('report-text').value.trim();
+    submitted = true;
+    fb.className = 'feedback ok';
+    fb.textContent = 'Your example report is ready: ' + districtName(mine.district) + ', ' + mine.cm + ' cm, ' + bodyRef(mine.cm) + '. Go to the next step to see it on the map. Nothing was sent anywhere.';
+    renderResults();
+  });
+
+  /* Step 4: results */
+  var windowMinutes = 60;
+  function renderResults() {
+    var map = drawMap(document.getElementById('result-map'), { pick: false, label: 'Example map of an invented city with flood reports' });
+    var rows = document.getElementById('report-rows');
+    rows.innerHTML = '';
+    var all = D.reports.filter(function (r) { return r.minutesAgo <= windowMinutes; });
+    if (submitted) all = [mine].concat(all);
+    all.forEach(function (r) {
+      addPin(map.pins, r, r === mine);
+      var tr = el('tr');
+      tr.appendChild(el('td', null, districtName(r.district) + (r === mine ? ' (your example report)' : '')));
+      tr.appendChild(el('td', null, r.cm + ' cm, ' + bodyRef(r.cm) + ', ' + band(r.cm).label));
+      tr.appendChild(el('td', null, ago(r.minutesAgo)));
+      tr.appendChild(el('td', null, r.text || ''));
+      rows.appendChild(tr);
+    });
+    if (!submitted) {
+      var tr = el('tr');
+      var td = el('td', { colspan: '4', 'class': 'empty' }, 'Your report is not here yet. Go back to step 3 and add it.');
+      tr.appendChild(td); rows.insertBefore(tr, rows.firstChild);
+    }
+  }
+  var wbtns = document.querySelectorAll('[data-window]');
+  for (var i = 0; i < wbtns.length; i++) {
+    wbtns[i].addEventListener('click', function () {
+      windowMinutes = parseInt(this.getAttribute('data-window'), 10);
+      for (var j = 0; j < wbtns.length; j++) wbtns[j].setAttribute('aria-pressed', wbtns[j] === this ? 'true' : 'false');
+      renderResults();
+    });
+  }
+  renderResults();
+
+  /* Step 5: your scale */
+  var ideas = document.getElementById('scale-ideas');
+  var myScale = document.getElementById('my-scale');
+  var echo = document.getElementById('scale-echo');
+  function echoScale(v) {
+    v = (v || '').trim();
+    echo.textContent = v ? 'Where you live, a report might say: \'the water is up to ' + v + '\'. Would everyone in your community read it the same way?' : '';
+  }
+  D.scaleIdeas.forEach(function (idea) {
+    var b = el('button', { 'class': 'btn', type: 'button' }, idea);
+    b.addEventListener('click', function () { myScale.value = idea; echoScale(idea); });
+    ideas.appendChild(b);
+  });
+  myScale.addEventListener('input', function () { echoScale(myScale.value); });
+})();
+</script>
+</body>
+</html>

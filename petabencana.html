@@ -280,7 +280,7 @@
     });
     s.appendChild(svg('path', { d: 'M -10 150 C 120 170, 200 240, 300 250 S 480 200, 610 260', fill: 'none', stroke: '#9CC3DB', 'stroke-width': '14', 'stroke-linecap': 'round', 'pointer-events': 'none' }));
     D.districts.forEach(function (d) {
-      var t = svg('text', { x: d.cx, y: d.cy, 'text-anchor': 'middle', 'font-size': '16', fill: '#5F5F5F', 'pointer-events': 'none', 'font-family': 'Roboto, Arial, sans-serif' });
+      var t = svg('text', { x: d.cx, y: d.cy, 'text-anchor': 'middle', 'font-size': '22', fill: '#5F5F5F', 'pointer-events': 'none', 'font-family': 'Roboto, Arial, sans-serif' });
       t.textContent = d.name;
       s.appendChild(t);
     });
@@ -298,7 +298,7 @@
     title.textContent = (mine ? 'Your example report: ' : '') + districtName(r.district) + ', ' + r.cm + ' cm, ' + bodyRef(r.cm) + ', ' + ago(r.minutesAgo);
     pin.appendChild(title);
     if (mine) {
-      var label = svg('text', { x: r.x + 18, y: r.y + 5, 'font-size': '15', fill: '#1F2D39', 'font-weight': '500', 'font-family': 'Roboto, Arial, sans-serif' });
+      var label = svg('text', { x: r.x + 18, y: r.y + 5, 'font-size': '20', fill: '#1F2D39', 'font-weight': '500', 'font-family': 'Roboto, Arial, sans-serif' });
       label.textContent = 'You';
       pin.appendChild(label);
     }

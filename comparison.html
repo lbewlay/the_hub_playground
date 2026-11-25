@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Large or small model: what does each cost? | AI Playground for Climate Action</title>
+<meta name="description" content="The design of an experiment comparing a large and a small model on one task, with estimated energy use. The experiment has not run yet.">
+<script>(function(){var d=document.documentElement,q=location.search,e=/[?&]embed=1(&|$)/.test(q)||(!/[?&]embed=0(&|$)/.test(q)&&window.self!==window.top);d.className+=' js'+(e?' embed':'');})();</script>
+<link rel="stylesheet" href="assets/playground.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <img class="logo" src="assets/ter-wordmark-navy.png" alt="The Engine Room" width="128" height="24">
+    <a class="site-title" href="index.html">AI Playground for Climate Action</a>
+  </div>
+  <span class="badge badge-example">Early version: example data</span>
+</header>
+
+<div class="app-layout">
+  <nav class="sidebar" aria-label="Playground">
+    <button class="contents-toggle" type="button" aria-expanded="false" aria-controls="sidebar-nav">Contents <span class="toggle-sign" aria-hidden="true">+</span></button>
+    <div class="sidebar-nav" id="sidebar-nav">
+      <h2>Playground</h2>
+      <ul>
+        <li><a href="index.html">Start here</a></li>
+      </ul>
+      <h2>Stories</h2>
+      <ul>
+        <li><a href="petabencana.html">Report a flood, then see it on the map<span class="lens-tag">PetaBencana, frugal</span></a></li>
+        <li><a href="floralebanon.html">Photograph a plant so a model can learn from it<span class="lens-tag">Taxonomy meets Tech, community-centered</span></a></li>
+        <li><a href="ghana-crops.html">From photo to diagnosis, confidence and an expert<span class="lens-tag">Crop disease detection in Ghana, ecological</span></a></li>
+      </ul>
+      <h2>Experiment</h2>
+      <ul>
+        <li><a href="comparison.html" aria-current="page">Large or small model: what does each cost?<span class="lens-tag">Coming</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="main-inner">
+      <p class="eyebrow">Experiment <span class="badge badge-coming">Coming</span></p>
+      <h1>Large or small model: what does each cost?</h1>
+      <p class="lede">For one simple task, how much does a large general model add over a small one trained for the job, and how much more energy does it use?</p>
+
+      <div class="stub">
+        <p class="stub-title">This experiment has not run yet</p>
+        <p>This page sets out how we will run it. There are no results below, only empty cells. When we have run it, we will publish the numbers, the data and the code here, with a short write-up.</p>
+      </div>
+
+      <h2>Why this experiment</h2>
+      <p>A common assumption is that a bigger model is always better. PetaBencana argues the opposite for its own work: that smaller, well-curated datasets can be more accurate than large models, and use far less energy. This experiment puts a version of that claim to a simple, open test, and makes the frugal lens something you can measure.</p>
+
+      <h2>The task</h2>
+      <p>Sort short social media style posts into two groups: 'reports a flood happening now' or 'does not'. It is the same task as step one of the <a href="petabencana.html">flood report walk-through</a>, at a larger scale. We chose a text task because it is cheap to run, needs no images and needs no data from any initiative.</p>
+
+      <h2>The data</h2>
+      <p>About 600 example posts in English that we will write ourselves: 400 to train the small model and 200 held back to test both models. Half describe a flood happening now; half do not, including hard cases such as 'a flood of messages', memories of past floods and warnings about tomorrow's rain. No real posts and no PetaBencana data are used. We will publish the full set.</p>
+
+      <h2>The two models</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Arm</th><th scope="col">Model</th><th scope="col">How it runs</th></tr></thead>
+          <tbody>
+            <tr><td>Large</td><td>An open-weights general language model with about seven to eight billion parameters. We will record the exact model and version.</td><td>Asked to sort each post with one fixed instruction and no training. Runs on one computer we can measure.</td></tr>
+            <tr><td>Small</td><td>A simple word-counting classifier (TF-IDF features with logistic regression), trained on the 400 training posts.</td><td>Trains and runs on an ordinary laptop processor.</td></tr>
+            <tr><td>Optional middle</td><td>A small sentence model of about 100 million parameters with a simple classifier on top.</td><td>Laptop processor. Added only if the first two are far apart.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>We leave out large models offered only as paid online services. Their energy use cannot be measured from our side: our tools would only see our own computer sending a request. If the write-up mentions them, it will quote published estimates and say clearly who made them.</p>
+
+      <h2>How we will measure energy</h2>
+      <p>We will use CodeCarbon, an open-source tool that estimates the energy a computer uses while running a piece of code (processor, graphics card and memory) and converts it into an estimate of emissions using the carbon intensity of a country's electricity grid. We will run it offline with one fixed country, so the results can be repeated, and report energy in kilowatt-hours as well as emissions, so you can apply your own grid.</p>
+      <ol>
+        <li>Record the computer used: processor, graphics card, memory, operating system and software versions.</li>
+        <li>Measure the computer at rest for five minutes, to report alongside.</li>
+        <li>Small model: measure training once, and sorting the 200 test posts separately.</li>
+        <li>Large model: measure sorting the 200 test posts. Downloading the model is not counted, and we will say so.</li>
+        <li>Repeat each sorting run three times and report the middle value.</li>
+      </ol>
+
+      <h2>What we will publish</h2>
+      <p>A results table with one row per model, filled in once the experiment has run:</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th scope="col">Model</th><th scope="col">Accuracy</th><th scope="col">Energy to train (kWh)</th><th scope="col">Energy per 1,000 posts (kWh)</th><th scope="col">Emissions per 1,000 posts (g CO2e)</th><th scope="col">Time per post</th><th scope="col">Runs offline on a laptop</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Large</td><td class="empty">Not run yet</td><td class="empty">None needed</td><td class="empty">Not run yet</td><td class="empty">Not run yet</td><td class="empty">Not run yet</td><td class="empty">Not run yet</td></tr>
+            <tr><td>Small</td><td class="empty">Not run yet</td><td class="empty">Not run yet</td><td class="empty">Not run yet</td><td class="empty">Not run yet</td><td class="empty">Not run yet</td><td class="empty">Not run yet</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Alongside the table: the raw measurement file from CodeCarbon, the 600 posts, the instruction given to the large model, a short script to repeat the run, and a one-page write-up with a chart of energy per 1,000 posts next to accuracy.</p>
+
+      <h2>What it will not show</h2>
+      <ul>
+        <li>One task, one computer and example data. Other tasks and other machines will give other numbers.</li>
+        <li>Estimates, not readings from a meter. CodeCarbon does not count storage, networks or cooling.</li>
+        <li>Large models can do many more things than this task. The question is whether this task needs one.</li>
+      </ul>
+
+      <footer class="site-footer">
+        <p>Experiment design by The Engine Room. Not run yet; no results on this page.</p>
+        <p><a href="index.html">Back to the Playground</a> &middot; Last updated November 25, 2026.</p>
+      </footer>
+    </div>
+  </main>
+</div>
+
+<script src="assets/playground.js"></script>
+</body>
+</html>
